@@ -33,21 +33,21 @@ class HardWork {
 
   do() {
     let i = 0;
-    let intervalId;
-
+    let timeoutAt;
     const executeNextTask = () => {
       if (i < this._tasks.length) {
         this._tasks[i]();
         i++;
-      } else {
-        clearInterval(intervalId);
+
+        timeoutAt = setTimeout(executeNextTask, 0);
       }
     };
 
+    // Start executing tasks
     executeNextTask();
 
     document.getElementById("btn").addEventListener("click", () => {
-      clearInterval(intervalId);
+      clearTimeout(timeoutAt);
     });
   }
 
