@@ -32,18 +32,9 @@ class HardWork {
   }
 
   do() {
-    let i = 0;
-    let timeoutAt;
-    const executeNextTask = () => {
-      if (i < this._tasks.length) {
-        this._tasks[i]();
-        i++;
-
-        timeoutAt = setTimeout(executeNextTask, 0);
-      }
-    };
-
-    executeNextTask();
+    for (let i = 0; i < this._tasks.length; i++) {
+      this._tasks[i]();
+    }
   }
 
   // do() 이외의 메서드는 수정하지마세요
