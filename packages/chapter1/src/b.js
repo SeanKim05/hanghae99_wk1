@@ -43,7 +43,6 @@ class HardWork {
       }
     };
 
-    // Start executing tasks
     executeNextTask();
 
     document.getElementById("btn").addEventListener("click", () => {
