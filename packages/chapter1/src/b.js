@@ -44,10 +44,6 @@ class HardWork {
     };
 
     executeNextTask();
-
-    document.getElementById("btn").addEventListener("click", () => {
-      clearTimeout(timeoutAt);
-    });
   }
 
   // do() 이외의 메서드는 수정하지마세요
