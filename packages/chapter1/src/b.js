@@ -31,10 +31,24 @@ class HardWork {
     this._tasks = this._initTasks();
   }
 
+  // do() {
+  //   for (let i = 0; i < this._tasks.length; i++) {
+  //     this._tasks[i](); // -> 이부분에서 랜더링이 막히는듯 i가 30000번돌 때까지 다음작업이 막힘
+  //   }
+  // }
+
   do() {
-    for (let i = 0; i < this._tasks.length; i++) {
-      this._tasks[i](); // -> 이부분에서 랜더링이 막히는듯 i가 30000번돌 때까지 다음작업이 막힘
-    }
+    let idx = 0;
+
+    const asyncTask = () => {
+      if (idx < this._tasks.length) {
+        this._tasks[idx]();
+        idx++;
+
+        setTimeout(asyncTask, 0); // -> 비동기 처리 렌더링이 우선 시 되고 그다음 연산처리
+      }
+    };
+    asyncTask();
   }
 
   // do() 이외의 메서드는 수정하지마세요
@@ -63,6 +77,7 @@ class HardWork {
 
     this._sendLog(); // ->  Blob object를 text로 변환하는 로직 -> 작업에 부하를 걸려고 만듬
   };
+
   async _sendLog() {
     const blob = new Blob(
       [
@@ -84,7 +99,6 @@ class HardWork {
   }
   //- do() 이외의 메서드는 수정하지마세요
 }
-
 // 수정하지마세요
 /**
  * @description
