@@ -19,6 +19,7 @@
 
 // 생성자 함수는 수정하지 마세요
 function Worker(health) {
+  console.log(this);
   this._health = health ?? 10;
 }
 
@@ -52,12 +53,13 @@ JuniorEngineer.prototype.work = function () {
   this._intelligence++;
 };
 
+console.log(JuniorEngineer);
+
 var juniorEngineer = new JuniorEngineer(10, 5);
 
 for (let i = 0; i < 5; i++) {
   juniorEngineer.work();
 }
-
 
 //- 여기에 코드를 작성하세요
 

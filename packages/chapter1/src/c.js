@@ -34,6 +34,7 @@ function JuniorEngineer(health, intelligence) {
 // 여기에 코드를 작성하세요
 // TO-DO
 Worker.prototype.getHealth = function () {
+  console.log(this);
   return this._health;
 };
 
@@ -41,8 +42,9 @@ Worker.prototype.work = function () {
   return this._health--;
 };
 
-JuniorEngineer.prototype = new Worker()
+JuniorEngineer.prototype = new Worker();
 JuniorEngineer.prototype._super = JuniorEngineer.prototype.constructor;
+console.log(JuniorEngineer.prototype.constructor);
 JuniorEngineer.prototype.getIntelligence = function () {
   return this._intelligence;
 };
@@ -56,7 +58,6 @@ var juniorEngineer = new JuniorEngineer(10, 5);
 for (let i = 0; i < 5; i++) {
   juniorEngineer.work();
 }
-
 
 //- 여기에 코드를 작성하세요
 
