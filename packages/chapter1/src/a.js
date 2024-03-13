@@ -52,6 +52,13 @@ JuniorEngineer.prototype.work = function () {
   this._intelligence++;
 };
 
+var juniorEngineer = new JuniorEngineer(10, 5);
+
+for (let i = 0; i < 5; i++) {
+  juniorEngineer.work();
+}
+
+
 //- 여기에 코드를 작성하세요
 
 /**
