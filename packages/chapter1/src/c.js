@@ -41,9 +41,8 @@ Worker.prototype.work = function () {
   return this._health--;
 };
 
-// JuniorEngineer.prototype = new Worker();
-JuniorEngineer.prototype = Object.create(Worker.prototype);
-JuniorEngineer.prototype._super = Worker;
+JuniorEngineer.prototype = new Worker()
+JuniorEngineer.prototype._super = JuniorEngineer.prototype.constructor;
 JuniorEngineer.prototype.getIntelligence = function () {
   return this._intelligence;
 };
@@ -51,6 +50,13 @@ JuniorEngineer.prototype.work = function () {
   this._super.prototype.work.call(this);
   this._intelligence++;
 };
+
+var juniorEngineer = new JuniorEngineer(10, 5);
+
+for (let i = 0; i < 5; i++) {
+  juniorEngineer.work();
+}
+
 
 //- 여기에 코드를 작성하세요
 
